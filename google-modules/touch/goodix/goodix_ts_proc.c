@@ -99,9 +99,6 @@ static uint32_t index;
 /* factory test */
 #define DISCARD_FRAME_NUMS 6
 #define ABS(x) (((x) >= 0) ? (x) : -(x))
-#ifndef MAX
-#define MAX(a, b) ((a > b) ? a : b)
-#endif
 
 #define GTP_CAP_TEST 1
 #define GTP_DELTA_TEST 2
