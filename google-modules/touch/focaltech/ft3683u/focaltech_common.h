@@ -62,7 +62,7 @@
 #define FTS_STTW_E5_BUF_LEN                 14
 #define FTS_LPTW_E3_BUF_LEN                 12
 #define FTS_LPTW_E4_BUF_LEN                 24
-#define FTS_LPTW_BUF_LEN                    (max(FTS_LPTW_E3_BUF_LEN, FTS_LPTW_E4_BUF_LEN))
+#define FTS_LPTW_BUF_LEN                    (MAX(FTS_LPTW_E3_BUF_LEN, FTS_LPTW_E4_BUF_LEN))
 
 #define FILE_NAME_LENGTH                    128
 #define FTS_MESSAGE_LENGTH                  128
