@@ -24,12 +24,11 @@
 #include <linux/slab.h>
 #include <linux/debugfs.h>
 #include <misc/gvotable.h>
-#include <linux/version.h>
 #include "gbms_power_supply.h"
 #include "google_bms.h"
 #include "google_psy.h"
 
-#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 9, 0)
+#ifndef MAX
 #define MAX(x, y)	((x) < (y) ? (y) : (x))
 #endif
 #define DUAL_FG_DELAY_INIT_MS	500

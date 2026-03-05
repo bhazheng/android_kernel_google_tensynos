@@ -48,8 +48,9 @@
  * to retrieve the min and max of two values, consider using a conditional swap
  * instead.
  */
+#ifndef MAX
 #define MAX(x, y) ((x) < (y) ? (y) : (x))
-
+#endif
 /**
  * CSTD_UNUSED - Function-like macro for suppressing unused variable warnings.
  *
