@@ -28,7 +28,7 @@
 
 #include <linux/version.h>
 
-#if (KERNEL_VERSION(6, 11, 0) > LINUX_VERSION_CODE)
+#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 9, 0))
 /**
  * MIN - Return the lesser of two values.
  * @x: value1
