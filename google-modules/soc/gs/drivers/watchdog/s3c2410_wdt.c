@@ -717,10 +717,11 @@ static int proportion_in_1_digit(u64 dividend, u64 divisor)
 	return max(min((int) div64_u64(dividend * 10, divisor), 9), 0);
 }
 
+#define WDT_BUF_SIZE ((NR_CPUS > PRINT_CPUS_LIMIT) ? NR_CPUS : PRINT_CPUS_LIMIT)
 void s3c2410wdt_print_schedstat(const char *loglvl)
 {
 	int cpu;
-	char buf[max(NR_CPUS, PRINT_CPUS_LIMIT)];
+	char buf[WDT_BUF_SIZE];
 	char *bufp;
 	u64 duration;
 	struct s3c2410_wdt *wdt = s3c_wdt[LITTLE_CLUSTER];
