@@ -681,7 +681,11 @@ static int enter_state(suspend_state_t state)
 	pm_wakeup_clear(0);
 	if (sync_on_suspend_enabled) {
 		trace_suspend_resume(TPS("sync_filesystems"), 0, true);
-		error = suspend_fs_sync_with_abort();
+
+		error = pm_sleep_fs_sync();
+		if (error)
+			goto Unlock;
+
 		trace_suspend_resume(TPS("sync_filesystems"), 0, false);
 		if (error)
 			goto Unlock;

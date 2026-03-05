@@ -1982,7 +1982,9 @@ static bool add_discard_addrs(struct f2fs_sb_info *sbi, struct cp_control *cpc,
 		return false;
 
 	if (!force) {
-		if (!f2fs_realtime_discard_enable(sbi) || !se->valid_blocks ||
+		if (!f2fs_realtime_discard_enable(sbi) ||
+			(!se->valid_blocks &&
+				!IS_CURSEG(sbi, cpc->trim_start)) ||
 			SM_I(sbi)->dcc_info->nr_discards >=
 				SM_I(sbi)->dcc_info->max_discards)
 			return false;
@@ -2741,7 +2743,7 @@ static unsigned int __get_next_segno(struct f2fs_sb_info *sbi, int type)
 		return SIT_I(sbi)->last_victim[ALLOC_NEXT];
 
 	/* find segments from 0 to reuse freed segments */
-	if (F2FS_OPTION(sbi).alloc_mode == ALLOC_MODE_REUSE)
+	if (f2fs_get_alloc_mode(sbi) == ALLOC_MODE_REUSE)
 		return 0;
 
 	return curseg->segno;
